@@ -1,0 +1,2 @@
+Precompiled g-test v1.7.0 library for win64.
+Built using VS 2015 preview.

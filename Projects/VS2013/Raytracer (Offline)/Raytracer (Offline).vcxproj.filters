@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{45d1bf32-c12f-4d80-977c-34fd55da7038}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raytracers">
+      <UniqueIdentifier>{406580fc-74f1-4a4e-b5cc-7a108cf03f36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raytracers\Naive">
+      <UniqueIdentifier>{272e121c-9e1d-45e9-9491-fe9839622bd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raytracers\Naive\Header Files">
+      <UniqueIdentifier>{b9bc49cf-3669-4cf6-bc79-946d3b4b3f56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raytracers\Naive\Source Files">
+      <UniqueIdentifier>{f6811b6a-f6df-4039-8000-54d6f911fbe0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raytracers\Kd Tree">
+      <UniqueIdentifier>{2afb180a-2295-469d-b175-39d0de67f5ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raytracers\Kd Tree\Header Files">
+      <UniqueIdentifier>{ed69a904-bb89-4e2c-8ef4-22d388fe4fdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raytracers\Kd Tree\Source Files">
+      <UniqueIdentifier>{63326c13-0a00-4667-b1f8-262b754f32b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raytracers\Kd Tree\Traversal">
+      <UniqueIdentifier>{3faf5907-4fb0-4b7c-8b85-4a6625647406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raytracers\Kd Tree\Traversal\Header Files">
+      <UniqueIdentifier>{bafa726f-25f3-4128-9672-f46e149cd8b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raytracers\Kd Tree\Traversal\Source Files">
+      <UniqueIdentifier>{215b407a-2bb8-437c-a74a-399d3d03d75a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raytracers\Kd Tree\Construction">
+      <UniqueIdentifier>{98df7057-18ea-4359-8408-10e9572124aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raytracers\Kd Tree\Construction\Header Files">
+      <UniqueIdentifier>{12a8108c-18ab-4213-a85d-e33a2d2fd0e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raytracers\Kd Tree\Construction\Source Files">
+      <UniqueIdentifier>{af508642-a9f1-45c7-82dc-79ff5e8b226b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rasterization">
+      <UniqueIdentifier>{c86705d2-19df-4b05-8831-40734d45822e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rasterization\Header Files">
+      <UniqueIdentifier>{85d3a0f0-2903-4452-bbf2-0eb92a1a5ae4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rasterization\Source Files">
+      <UniqueIdentifier>{3660a18f-8652-4b61-8951-7d029b0fc218}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debugging">
+      <UniqueIdentifier>{33b18dd1-71f7-4ed0-9167-fd52c4fe3401}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debugging\Header Files">
+      <UniqueIdentifier>{2327225f-84e6-4083-be22-598bbbf28b8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debugging\Source Files">
+      <UniqueIdentifier>{ac8eec7f-4536-4f79-b67b-ab884b556d3f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\FrameBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\Tests\FrameBuffer Tests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\Basis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\RaytracerNaive.cpp">
+      <Filter>Raytracers\Naive\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\SceneNaive.cpp">
+      <Filter>Raytracers\Naive\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer %28Offline%29\StaticMeshInstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\StaticMeshNaive.cpp">
+      <Filter>Raytracers\Naive\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\StaticMeshManagerNaive.cpp">
+      <Filter>Raytracers\Naive\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\RaytracerKdTree.cpp">
+      <Filter>Raytracers\Kd Tree\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\StaticMeshKdTree.cpp">
+      <Filter>Raytracers\Kd Tree\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\SceneKdTree.cpp">
+      <Filter>Raytracers\Kd Tree\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\StaticMeshManagerKdTree.cpp">
+      <Filter>Raytracers\Kd Tree\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeNode.cpp">
+      <Filter>Raytracers\Kd Tree\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeConstruction.cpp">
+      <Filter>Raytracers\Kd Tree\Construction\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeStackTraversal.cpp">
+      <Filter>Raytracers\Kd Tree\Traversal\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\LineDrawing.cpp">
+      <Filter>Rasterization\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\DebugManager.cpp">
+      <Filter>Debugging\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer %28Offline%29\DebugNodeTransform.cpp">
+      <Filter>Debugging\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\DebugNodeLine.cpp">
+      <Filter>Debugging\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\Rasterization.cpp">
+      <Filter>Rasterization\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\FrameBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\Basis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\IScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\IRaytracer.h">
+      <Filter>Raytracers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\RaytracerNaive.h">
+      <Filter>Raytracers\Naive\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\SceneNaive.h">
+      <Filter>Raytracers\Naive\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer %28Offline%29\StaticMeshInstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\StaticMeshNaive.h">
+      <Filter>Raytracers\Naive\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer %28Offline%29\ITraceable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\StaticMeshManagerNaive.h">
+      <Filter>Raytracers\Naive\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\RaytracerKdTree.h">
+      <Filter>Raytracers\Kd Tree\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\StaticMeshKdTree.h">
+      <Filter>Raytracers\Kd Tree\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\SceneKdTree.h">
+      <Filter>Raytracers\Kd Tree\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\StaticMeshManagerKdTree.h">
+      <Filter>Raytracers\Kd Tree\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeNode.h">
+      <Filter>Raytracers\Kd Tree\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\IKdTreeTraversal.h">
+      <Filter>Raytracers\Kd Tree\Traversal\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeStackTraversal.h">
+      <Filter>Raytracers\Kd Tree\Traversal\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeConstruction.h">
+      <Filter>Raytracers\Kd Tree\Construction\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\LineDrawing.h">
+      <Filter>Rasterization\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\Line.h">
+      <Filter>Rasterization\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\DebugManager.h">
+      <Filter>Debugging\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\DebugNode.h">
+      <Filter>Debugging\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\DebugNodeTransform.h">
+      <Filter>Debugging\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\DebugNodeLine.h">
+      <Filter>Debugging\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\Rasterization.h">
+      <Filter>Rasterization\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
