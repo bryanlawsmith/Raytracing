@@ -65,7 +65,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -89,6 +94,16 @@
       <AdditionalDependencies>x64\SDL2.lib;x64\SDL2main.lib;opengl32.lib;glew32.lib;Assets.lib;MathLib.lib;Camera.lib;CommonCode.lib;Compression.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(ProjectDir)..\..\..\Raytracer\Shaders\*.*" "$(TargetDir)Shaders\"
+copy "$(ProjectDir)..\..\..\SDL2\lib\x64\SDL2.dll" "$(TargetDir)"
+copy "$(ProjectDir)..\..\..\glew\bin\Release\x64\glew32.dll" "$(TargetDir)"
+copy "$(ProjectDir)..\..\..\Resources\test.mdb" "$(TargetDir)"
+</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>if not exist "$(TargetDir)Shaders" mkdir "$(TargetDir)Shaders"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -121,6 +136,16 @@
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>x64\SDL2.lib;x64\SDL2main.lib;opengl32.lib;glew32.lib;Assets.lib;MathLib.lib;Camera.lib;CommonCode.lib;Compression.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(ProjectDir)..\..\..\Raytracer\Shaders\*.*" "$(TargetDir)Shaders\"
+copy "$(ProjectDir)..\..\..\SDL2\lib\x64\SDL2.dll" "$(TargetDir)"
+copy "$(ProjectDir)..\..\..\glew\bin\Release\x64\glew32.dll" "$(TargetDir)"
+copy "$(ProjectDir)..\..\..\Resources\test.mdb" "$(TargetDir)"
+</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>if not exist "$(TargetDir)Shaders" mkdir "$(TargetDir)Shaders"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Raytracer\CameraControl.cpp" />
@@ -140,6 +165,23 @@
     <ClInclude Include="..\..\..\Raytracer\ShaderProgram.h" />
     <ClInclude Include="..\..\..\Raytracer\StaticMeshInstance.h" />
     <ClInclude Include="..\..\..\Raytracer\Triangle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Raytracer\Shaders\ShaderCoreTrace.comp">
+      <FileType>Text</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </None>
+    <None Include="..\..\..\Raytracer\Shaders\ShaderSimpleTexture.frag">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <FileType>Text</FileType>
+    </None>
+    <None Include="..\..\..\Raytracer\Shaders\ShaderSimpleTexture.vert">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <FileType>Text</FileType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

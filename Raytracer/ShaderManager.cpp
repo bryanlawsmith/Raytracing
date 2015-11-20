@@ -7,9 +7,9 @@ namespace Raytracer
 	const std::string ShaderManager::SHADER_SIMPLE_TEXTURE	= "Shaders/ShaderSimpleTexture";
 	const std::string ShaderManager::SHADER_CORE_TRACE		= "Shaders/ShaderCoreTrace";
 	
-	static const std::string SHADER_VERTEX_EXTENSION	= ".vs";
-	static const std::string SHADER_FRAGMENT_EXTENSION	= ".fs";
-	static const std::string SHADER_COMPUTE_EXTENSION	= ".cs";
+	static const std::string SHADER_VERTEX_EXTENSION	= ".vert";
+	static const std::string SHADER_FRAGMENT_EXTENSION	= ".frag";
+	static const std::string SHADER_COMPUTE_EXTENSION	= ".comp";
 
 	ShaderManager::ShaderManager()
 	{

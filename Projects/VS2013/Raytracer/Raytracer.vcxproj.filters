@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Shaders">
       <UniqueIdentifier>{33af6707-8a31-4aaa-a139-a18aaee214b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{4ef69ac0-d537-425f-ab54-10d31b9dd9fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Raytracer\main.cpp">
@@ -68,5 +71,16 @@
     <ClInclude Include="..\..\..\Raytracer\StaticMeshInstance.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Raytracer\Shaders\ShaderCoreTrace.comp">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\..\Raytracer\Shaders\ShaderSimpleTexture.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\..\Raytracer\Shaders\ShaderSimpleTexture.vert">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
