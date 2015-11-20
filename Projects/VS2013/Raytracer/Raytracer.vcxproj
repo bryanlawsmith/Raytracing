@@ -66,10 +66,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)Build Output\$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)Build Output\$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -86,11 +86,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\SDL2\include;$(ProjectDir)\..\..\..\glew\include;$(ProjectDir)\..\..\..\MathLib;$(ProjectDir)\..\..\..\Camera;$(ProjectDir)\..\..\..\CommonCode;$(ProjectDir)\..\..\..\Assets</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)SDL2\include;$(SolutionDir)glew\include;$(SolutionDir)MathLib;$(SolutionDir)Camera;$(SolutionDir)CommonCode;$(SolutionDir)Assets</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)\..\..\..\SDL2\lib;$(ProjectDir)\..\..\..\glew\lib\Release\x64;$(ProjectDir)\..\..\..\lib\debug\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)SDL2\lib;$(SolutionDir)glew\lib\Release\x64;$(SolutionDir)Build Output\libs\debug\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>x64\SDL2.lib;x64\SDL2main.lib;opengl32.lib;glew32.lib;Assets.lib;MathLib.lib;Camera.lib;CommonCode.lib;Compression.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
@@ -126,13 +126,13 @@ copy "$(ProjectDir)..\..\..\Resources\test.mdb" "$(TargetDir)"
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\SDL2\include;$(ProjectDir)\..\..\..\glew\include;$(ProjectDir)\..\..\..\MathLib;$(ProjectDir)\..\..\..\Camera;$(ProjectDir)\..\..\..\CommonCode;$(ProjectDir)\..\..\..\Assets</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)SDL2\include;$(SolutionDir)glew\include;$(SolutionDir)MathLib;$(SolutionDir)Camera;$(SolutionDir)CommonCode;$(SolutionDir)Assets</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(ProjectDir)\..\..\..\SDL2\lib;$(ProjectDir)\..\..\..\glew\lib\Release\x64;$(ProjectDir)\..\..\..\lib\release\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)SDL2\lib;$(SolutionDir)glew\lib\Release\x64;$(SolutionDir)Build Output\libs\release\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>x64\SDL2.lib;x64\SDL2main.lib;opengl32.lib;glew32.lib;Assets.lib;MathLib.lib;Camera.lib;CommonCode.lib;Compression.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
