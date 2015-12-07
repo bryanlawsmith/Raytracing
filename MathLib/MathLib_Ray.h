@@ -15,12 +15,10 @@ namespace MathLib
 
 class ray
 {
-	private:
+	public:
 
 		vector4 position;
 		vector4 direction;
-
-	public:
 
 		ray()
 		{

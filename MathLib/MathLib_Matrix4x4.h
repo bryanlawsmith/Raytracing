@@ -15,7 +15,7 @@ namespace MathLib
 
 class matrix4x4
 {
-    private:
+	public:
 
         union
         {
@@ -41,8 +41,6 @@ class matrix4x4
 
 #endif // (MATHLIB_SSE)
         };
-
-    public:
 
         matrix4x4()
         {

@@ -16,7 +16,7 @@ class matrix4x4;
 
 class quaternion
 {
-    private:
+	public:
 
         union
         {
@@ -25,8 +25,6 @@ class quaternion
                 float w, x, y, z;
             } MATHLIB_ALIGN(16);
         };
-
-    public:
 
         quaternion()
         {

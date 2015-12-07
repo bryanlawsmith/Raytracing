@@ -17,11 +17,15 @@ class matrix4x4;
 
 class vector4
 {
-	private:
+	public:
 
 		union
 		{
 			float v[4];
+			struct
+			{
+				float w, z, y, x;
+			};
 
 #if (MATHLIB_SSE)
 			__m128 sse_vec;
@@ -33,8 +37,6 @@ class vector4
 		static __m128 vector4_setWTo1;
 		static __m128 vector4_negateVector;
 #endif // (MATHLIB_SSE)
-
-	public:
 
 		vector4()
 		{

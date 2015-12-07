@@ -12,9 +12,12 @@
 namespace MathLib
 {
 
-struct plane
+class plane
 {
 	public:
+
+		vector4 pointOnPlane;
+		vector4 normal;
 
 		plane()
 		{
@@ -68,11 +71,6 @@ struct plane
 		{
 			return (normal);
 		}
-
-	private:
-
-		vector4 pointOnPlane;
-		vector4 normal;
 
 		friend void plane_copy(plane& dest, const plane& src);
 } MATHLIB_ALIGN(16);
