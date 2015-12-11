@@ -6,16 +6,16 @@ namespace MathLib
 {
 
 void GenerateTransformMatrix(matrix4x4& transform,
-							 const vector4& position,
-							 const vector4& rotation,
-							 const vector4& scale)
+	const vector4& position,
+	const vector4& rotation,
+	const vector4& scale)
 {
     // Generate the translation transform.
     matrix4x4 translationMatrix
     (
-        1.0f, 0.0f, 0.0f, position.extractX(),
-        0.0f, 1.0f, 0.0f, position.extractY(),
-        0.0f, 0.0f, 1.0f, position.extractZ(),
+        1.0f, 0.0f, 0.0f, position.x,
+        0.0f, 1.0f, 0.0f, position.y,
+        0.0f, 0.0f, 1.0f, position.z,
         0.0f, 0.0f, 0.0f, 1.0f
     );
 
@@ -26,9 +26,9 @@ void GenerateTransformMatrix(matrix4x4& transform,
 
     // Perform rotation around the x axis.
     {
-        float angleRads	= MATHLIB_DEG_TO_RAD(rotation.extractX());
-        float sinAngle	= sinf(angleRads);
-        float cosAngle	= cosf(angleRads);
+        float angleRads = MATHLIB_DEG_TO_RAD(rotation.x);
+        float sinAngle = sinf(angleRads);
+        float cosAngle = cosf(angleRads);
 
         // Caclulate modified y axis.
         vector4 perpendicularContribution;
@@ -42,16 +42,16 @@ void GenerateTransformMatrix(matrix4x4& transform,
 
     // Perform rotation around the y axis.
     matrix4x4 rotateAroundY;
-    rotateAroundY.loadRotationY(rotation.extractY());
+    rotateAroundY.loadRotationY(rotation.y);
     matrix4x4_vectorMul(rotateAroundY, xAxis, xAxis);
     matrix4x4_vectorMul(rotateAroundY, yAxis, yAxis);
     matrix4x4_vectorMul(rotateAroundY, zAxis, zAxis);
 
     // Perform rotaiton around the z axis.
     {
-        float angleRads	= MATHLIB_DEG_TO_RAD(rotation.extractZ());
-        float sinAngle	= sinf(angleRads);
-        float cosAngle	= cosf(angleRads);
+        float angleRads = MATHLIB_DEG_TO_RAD(rotation.z);
+        float sinAngle = sinf(angleRads);
+        float cosAngle = cosf(angleRads);
 
         // Calculate modified y axis.
         vector4 perpendicularContribution;
@@ -65,18 +65,18 @@ void GenerateTransformMatrix(matrix4x4& transform,
 
     matrix4x4 rotationMatrix
     (
-        xAxis.extractX(), yAxis.extractX(), zAxis.extractX(), 0.0f,
-        xAxis.extractY(), yAxis.extractY(), zAxis.extractY(), 0.0f,
-        xAxis.extractZ(), yAxis.extractZ(), zAxis.extractZ(), 0.0f,
+        xAxis.x, yAxis.x, zAxis.x, 0.0f,
+        xAxis.y, yAxis.y, zAxis.y, 0.0f,
+        xAxis.z, yAxis.z, zAxis.z, 0.0f,
         0.0f, 0.0f, 0.0f, 1.0f
     );
 
     // Generate the scale transform.
     matrix4x4 scaleMatrix
     (
-        scale.extractX(), 0.0f, 0.0f, 0.0f,
-        0.0f, scale.extractY(), 0.0f, 0.0f,
-        0.0f, 0.0f, scale.extractZ(), 0.0f,
+        scale.x, 0.0f, 0.0f, 0.0f,
+        0.0f, scale.y, 0.0f, 0.0f,
+        0.0f, 0.0f, scale.z, 0.0f,
         0.0f, 0.0f, 0.0f, 1.0f
     );
 
@@ -87,16 +87,16 @@ void GenerateTransformMatrix(matrix4x4& transform,
 }
 
 void GenerateTransformMatrix(matrix4x4& transform,
-							 const vector4& position,
-							 const quaternion& orientation,
-							 const vector4& scale)
+	const vector4& position,
+	const quaternion& orientation,
+	const vector4& scale)
 {
 	// Generation the translation transform.
 	matrix4x4 translationTransform
 	(
-		1.0f, 0.0f, 0.0f, position.extractX(),
-		0.0f, 1.0f, 0.0f, position.extractY(),
-		0.0f, 0.0f, 1.0f, position.extractZ(),
+		1.0f, 0.0f, 0.0f, position.x,
+		0.0f, 1.0f, 0.0f, position.y,
+		0.0f, 0.0f, 1.0f, position.z,
 		0.0f, 0.0f, 0.0f, 1.0f
 	);
 
@@ -107,9 +107,9 @@ void GenerateTransformMatrix(matrix4x4& transform,
 	// Gemerate the scale transform.
 	matrix4x4 scaleTransform
 	(
-		scale.extractX(), 0.0f, 0.0f, 0.0f,
-		0.0f, scale.extractY(), 0.0f, 0.0f,
-		0.0f, 0.0f, scale.extractZ(), 0.0f,
+		scale.x, 0.0f, 0.0f, 0.0f,
+		0.0f, scale.y, 0.0f, 0.0f,
+		0.0f, 0.0f, scale.z, 0.0f,
 		0.0f, 0.0f, 0.0f, 1.0f
 	);
 
@@ -120,16 +120,16 @@ void GenerateTransformMatrix(matrix4x4& transform,
 }
 
 void GenerateInverseTransformMatrix(matrix4x4& transform,
-									const vector4& position,
-									const quaternion& orientation,
-									const vector4& scale)
+	const vector4& position,
+	const quaternion& orientation,
+	const vector4& scale)
 {
 	// Generate the inverse translation transform.
 	matrix4x4 invTranslationTransform
 	(
-		1.0f, 0.0f, 0.0f, -position.extractX(),
-		0.0f, 1.0f, 0.0f, -position.extractY(),
-		0.0f, 0.0f, 1.0f, -position.extractZ(),
+		1.0f, 0.0f, 0.0f, -position.x,
+		0.0f, 1.0f, 0.0f, -position.y,
+		0.0f, 0.0f, 1.0f, -position.z,
 		0.0f, 0.0f, 0.0f, 1.0f
 	);
 
@@ -142,9 +142,9 @@ void GenerateInverseTransformMatrix(matrix4x4& transform,
 	// Generate the inverse scale transform.
 	matrix4x4 invScaleTransform
 	(
-		1.0f / scale.extractX(), 0.0f, 0.0f, 0.0f, 
-		0.0f, 1.0f / scale.extractY(), 0.0f, 0.0f, 
-		0.0f, 0.0f, 1.0f / scale.extractZ(), 0.0f,
+		1.0f / scale.x, 0.0f, 0.0f, 0.0f, 
+		0.0f, 1.0f / scale.y, 0.0f, 0.0f, 
+		0.0f, 0.0f, 1.0f / scale.z, 0.0f,
 		0.0f, 0.0f, 0.0f, 1.0f
 	);
 
@@ -155,28 +155,26 @@ void GenerateInverseTransformMatrix(matrix4x4& transform,
 }
 
 void GenerateInverseTransformMatrix(matrix4x4& transform,
-									const vector4& position,
-									const quaternion& orientation,
-									float scale)
+	const vector4& position,
+	const quaternion& orientation,
+	float scale)
 {
-	GenerateInverseTransformMatrix(transform, 
-								  position, 
-								  orientation, 
-								  MathLib::vector4(scale, scale, scale, 1.0f));
+	GenerateInverseTransformMatrix(transform, position, orientation, 
+		MathLib::vector4(scale, scale, scale, 1.0f));
 }
 
 
 void GenerateTransformMatrix(matrix4x4& transform,
-                             const vector4& position,
-                             const quaternion& orientation,
-                             const float scale)
+    const vector4& position,
+    const quaternion& orientation,
+    const float scale)
 {
     // Generation the translation transform.
     matrix4x4 translationTransform
     (
-        1.0f, 0.0f, 0.0f, position.extractX(),
-        0.0f, 1.0f, 0.0f, position.extractY(),
-        0.0f, 0.0f, 1.0f, position.extractZ(),
+        1.0f, 0.0f, 0.0f, position.x,
+        0.0f, 1.0f, 0.0f, position.y,
+        0.0f, 0.0f, 1.0f, position.z,
         0.0f, 0.0f, 0.0f, 1.0f
     );
 

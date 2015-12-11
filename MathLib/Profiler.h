@@ -1,9 +1,3 @@
-/**
-* This work is licensed under the Creative Commons Attribution 3.0 Unported License.
-* To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative Commons,
-* 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
-*/
-
 ///------------------------------------------------------------------------------------------------
 /// Profiler.h
 ///
@@ -35,14 +29,14 @@ class Profiler
 	private:
 
 #ifdef _WIN32
+		/// <summary>The number of performance counter ticks per second.</summary>
 		static int64_t performanceCounterFrequency;
-		/// The number of performance counter ticks per second.
 
+		/// <summary>The starting time for the profiled segment.</summary>
 		int64_t startTime;
-		/// The starting time for the profiled segment.
 
+		/// <summary>The ending time for the profiled segment.</summary>
 		int64_t stopTime;
-		/// The ending time for the profiled segment.
 #endif
 
 	public:
@@ -55,26 +49,32 @@ class Profiler
 #endif
 		}
 
-		void start()
+		/// <summary>
 		/// Sets the start time for the performance counter.
-		/// @note You must call the stop() method before any valid results can be queried.
+		/// NOTE: You must call the stop() method before any valid results can be queried.
+		/// </summary>
+		void start()
 		{
 #ifdef _WIN32
 			QueryPerformanceCounter((LARGE_INTEGER*)&startTime);
 #endif
 		}
 
-		void stop()
+		/// <summary>
 		/// Sets the stop time for the performance counter.
-		/// @note After this method is called, you can safely call the getTime* methods.
+		/// NOTE: After this method is called, you can safely call the getTime* methods.
+		/// </summary>
+		void stop()
 		{
 #ifdef _WIN32
 			QueryPerformanceCounter((LARGE_INTEGER*)&stopTime);
 #endif
 		}
 
+		/// <summary>
+		/// Returns the time interval between the start and stop times represented in seconds.
+		/// </summary>
 		float getTimeSeconds() const
-		/// @return The time interval between the start and stop times represented in seconds.
 		{
 #ifdef _WIN32
 			long double time	= ((long double)stopTime - (long double)startTime) /
@@ -84,8 +84,10 @@ class Profiler
 #endif
 		}
 
+		/// <summary>
+		/// The time interval between the start and stop times represented in milliseconds.
+		/// </summary>
 		float getTimeMilliseconds() const
-		/// @return The time interval between the start and stop times represented in milliseconds.
 		{
 #ifdef _WIN32
 			long double time	= (long double)(stopTime - startTime) /
@@ -95,8 +97,11 @@ class Profiler
 #endif
 		}
 
+		/// <summary>
+		/// Performs any initialization the profiler system needs. 
+		/// Depending on the implementation, this may do a lot, or nothing at all.
+		/// </summary>
 		static void initializePerformanceCounters()
-		/// Performs any initialization the profiler system needs. Depending on the implementation, this may do a lot, or nothing at all.
 		{
 #ifdef _WIN32
 			BOOL result	= QueryPerformanceFrequency((LARGE_INTEGER*)&performanceCounterFrequency);

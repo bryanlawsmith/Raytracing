@@ -1,9 +1,3 @@
-/**
-* This work is licensed under the Creative Commons Attribution 3.0 Unported License.
-* To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative Commons,
-* 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
-*/
-
 #include <stdio.h>
 #include "MathLib.h"
 #include "Profiler.h"
@@ -28,9 +22,9 @@ void initializeVectors()
 		float multiplierW	= rand() > (RAND_MAX / 2) ? 1.0f : -1.0f;
 
 		vectorArray1[i].setXYZW((float)rand() * multiplierX,
-							    (float)rand() * multiplierY,
-							    (float)rand() * multiplierZ,
-							    (float)rand() * multiplierW);
+			(float)rand() * multiplierY,
+			(float)rand() * multiplierZ,
+			(float)rand() * multiplierW);
 	}
 
 	for (uint32_t i = 0; i < numVectors; i++)
@@ -41,19 +35,19 @@ void initializeVectors()
 		float multiplierW	= rand() > (RAND_MAX / 2) ? 1.0f : -1.0f;
 
 		vectorArray2[i].setXYZW((float)rand() * multiplierX,
-							    (float)rand() * multiplierY,
-							    (float)rand() * multiplierZ,
-							    (float)rand() * multiplierW);
+			(float)rand() * multiplierY,
+			(float)rand() * multiplierZ,
+			(float)rand() * multiplierW);
 	}
 }
 
 void vector4_print(const MathLib::vector4& vector)
 {
 	printf("vector at [%p]:\n", &vector);
-	printf("x : %.4f\n", vector.extractX());
-	printf("y : %.4f\n", vector.extractY());
-	printf("z : %.4f\n", vector.extractZ());
-	printf("w : %.4f\n", vector.extractW());
+	printf("x : %.4f\n", vector.x);
+	printf("y : %.4f\n", vector.y);
+	printf("z : %.4f\n", vector.z);
+	printf("w : %.4f\n", vector.w);
 	printf("\n");
 }
 
@@ -691,15 +685,15 @@ int main()
 
 	VectorTests::initializeVectors();
 
-    printf("MathLib test program.\n");
+	printf("MathLib test program.\n");
 
-    MathLib::initMathLib();
-    printf("%s\n", MathLib::getInfoString());
-    printf("\n");
+	MathLib::initMathLib();
+	printf("%s\n", MathLib::getInfoString());
+	printf("\n");
 
 	//vectorTests();
 
 	MatrixTests::matrixTests();
 
-    return (0);
+	return (0);
 }
