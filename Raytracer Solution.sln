@@ -44,6 +44,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Assets", "Projects\VS2013\A
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Geometry", "Projects\VS2013\Geometry\Geometry.vcxproj", "{07B1EBC8-89DA-48BC-B5CA-4E4E1EB07643}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7D6A5D6D-7B2C-4491-8F19-A1FEC78AC809} = {7D6A5D6D-7B2C-4491-8F19-A1FEC78AC809}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Geometry Tests", "Projects\VS2013\Geometry Tests\Geometry Tests.vcxproj", "{900005ED-7C8E-4984-89CF-098E39036926}"
 	ProjectSection(ProjectDependencies) = postProject

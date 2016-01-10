@@ -1,59 +1,47 @@
-#include "StaticMeshNaive.h"
-#include <MeshManager.h>
-#include <StoredStaticMesh.h>
+#include "BasicGeometry.h"
 #include <MemoryAllocatorAligned.h>
 #include <Triangle.h>
 #include <Geometry.h>
 #include <cassert>
+#include <CommonDefines.h>
 
-using namespace Assets;
 using namespace Core;
 
 namespace Raytracer
 {
-	StaticMeshNaive::StaticMeshNaive()
+	BasicGeometry::BasicGeometry(const StaticMesh& mesh) : 
+		m_Triangles(nullptr)
 	{
-		m_NumTriangles = 0;
-		m_Triangles = nullptr;
+		Initialize(mesh);
 	}
 
-	StaticMeshNaive::StaticMeshNaive(const string& meshId)
-	{
-		m_Triangles = nullptr;
-
-		Initialize(meshId);
-	}
-
-	StaticMeshNaive::~StaticMeshNaive()
+	BasicGeometry::~BasicGeometry()
 	{
 		FreeMemory();
 	}
 
-	void StaticMeshNaive::Initialize(const string& meshId)
+	void BasicGeometry::Initialize(const StaticMesh& mesh)
 	{
 		FreeMemory();
 
-		auto& meshManager = MeshManager::GetInstance();
-		auto mesh = meshManager.GetMesh(meshId);
-		
-		auto numVertices = mesh->GetNumVertices();
-		auto numIndices = mesh->GetNumIndices();
+		auto numVertices = mesh.GetNumVertices();
+		auto numIndices = mesh.GetNumIndices();
 		assert(0 == numIndices % 3);
 
-		auto vertexArray = mesh->GetVertexArray();
-		auto normalArray = mesh->GetNormalArray();
-		auto texCoordArray = mesh->GetTexCoordArray();
-		auto indexArray = mesh->GetIndexArray();
+		auto vertexArray = mesh.GetVertexArray();
+		auto normalArray = mesh.GetNormalArray();
+		auto texCoordArray = mesh.GetTexCoordArray();
+		auto indexArray = mesh.GetIndexArray();
 
 		// Calculate and allocate required storage space.
 		m_NumTriangles = numIndices / 3;
 		m_Triangles = reinterpret_cast<Triangle*>(MemoryAllocatorAligned::Allocate((size_t)m_NumTriangles * sizeof(Triangle)));
 
-		for (unsigned int i = 0; i < numIndices; i += 3)
+		for (unsigned i = 0; i < numIndices; i += 3)
 		{
 			Triangle& currentTriangle = m_Triangles[i / 3];
 
-			for (unsigned int v = 0; v < 3; v++)
+			for (unsigned v = 0; v < 3; v++)
 			{
 				auto currentIndex = indexArray[i + v];
 				auto currentVertex = vertexArray + (currentIndex * 3);
@@ -65,9 +53,11 @@ namespace Raytracer
 				currentTriangle.m_Vertices[v].m_TexCoord.setXYZW(currentTexCoord[0], currentTexCoord[1], 0.0f, 0.0f);
 			}
 		}
+
+		GeometryLib::CalculateBoundingVolume(vertexArray, numVertices, m_Bounds[AABB_EXTENTS_MIN], m_Bounds[AABB_EXTENTS_MAX]);
 	}
 
-	void StaticMeshNaive::FreeMemory()
+	void BasicGeometry::FreeMemory()
 	{
 		if (nullptr != m_Triangles)
 		{
@@ -78,7 +68,7 @@ namespace Raytracer
 		m_NumTriangles = 0;
 	}
 
-	bool StaticMeshNaive::Trace(const ray& intersectionRay, float* t, float* results) const
+	bool BasicGeometry::Trace(const ray& intersectionRay, float* t, float* results) const
 	{
 		bool intersectionFound = false;
 		*t = FLT_MAX;
@@ -92,7 +82,7 @@ namespace Raytracer
 			float latestT;
 			float u;
 			float v;
-			
+
 			if (GeometryLib::RayTriangleIntersection(intersectionRay, m_Triangles[i], latestT, u, v))
 			{
 				intersectionFound = true;

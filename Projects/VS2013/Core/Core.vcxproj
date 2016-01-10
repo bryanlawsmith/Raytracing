@@ -130,6 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Core\GenericAlgorithms.h" />
     <ClInclude Include="..\..\..\Core\GenericObjectPool.h" />
     <ClInclude Include="..\..\..\Core\GenericObjectPoolTests.h" />
     <ClInclude Include="..\..\..\Core\HighPerformanceTimer.h" />

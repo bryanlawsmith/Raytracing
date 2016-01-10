@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -73,46 +65,45 @@
     <Filter Include="Debugging\Source Files">
       <UniqueIdentifier>{ac8eec7f-4536-4f79-b67b-ab884b556d3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{d911abb2-6f30-405b-9faa-54e6b989e119}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Header Files">
+      <UniqueIdentifier>{b9c5296c-c173-4d13-b928-34d87b041d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Source Files">
+      <UniqueIdentifier>{ca441e16-f480-4db4-bc32-6541efec879d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application">
+      <UniqueIdentifier>{b6f45b26-8a29-46f6-af82-3bfb056c9771}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Application\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Geometry">
+      <UniqueIdentifier>{0540b975-f172-44ab-ad37-858a326d5108}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry\Header Files">
+      <UniqueIdentifier>{ac60476c-5338-408a-97fa-1d2dbbeec80b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry\Source Files">
+      <UniqueIdentifier>{cd25eb0c-c6c5-4b3e-b26f-abeebd405fb3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Raytracer (Offline)\main.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Application\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Raytracer (Offline)\FrameBuffer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Application\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Raytracer (Offline)\Tests\FrameBuffer Tests.cpp">
       <Filter>Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Raytracer (Offline)\Basis.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Raytracer (Offline)\RaytracerNaive.cpp">
-      <Filter>Raytracers\Naive\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Raytracer (Offline)\SceneNaive.cpp">
-      <Filter>Raytracers\Naive\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Raytracer %28Offline%29\StaticMeshInstance.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Raytracer (Offline)\StaticMeshNaive.cpp">
-      <Filter>Raytracers\Naive\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Raytracer (Offline)\StaticMeshManagerNaive.cpp">
-      <Filter>Raytracers\Naive\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Raytracer (Offline)\RaytracerKdTree.cpp">
-      <Filter>Raytracers\Kd Tree\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Raytracer (Offline)\StaticMeshKdTree.cpp">
-      <Filter>Raytracers\Kd Tree\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Raytracer (Offline)\SceneKdTree.cpp">
-      <Filter>Raytracers\Kd Tree\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Raytracer (Offline)\StaticMeshManagerKdTree.cpp">
-      <Filter>Raytracers\Kd Tree\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeNode.cpp">
       <Filter>Raytracers\Kd Tree\Source Files</Filter>
@@ -138,49 +129,37 @@
     <ClCompile Include="..\..\..\Raytracer (Offline)\Rasterization.cpp">
       <Filter>Rasterization\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\BasicRaytracer.cpp">
+      <Filter>Raytracers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\Raytracer.cpp">
+      <Filter>Raytracers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\BasicScene.cpp">
+      <Filter>Scenes\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\BasicGeometry.cpp">
+      <Filter>Geometry\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeGeometry.cpp">
+      <Filter>Geometry\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\BoundedTraceable.cpp">
+      <Filter>Application\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer %28Offline%29\GeometryInstance.cpp">
+      <Filter>Application\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Raytracer (Offline)\FrameBuffer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Application\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Raytracer (Offline)\Basis.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Raytracer (Offline)\IScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Raytracer (Offline)\IRaytracer.h">
-      <Filter>Raytracers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Raytracer (Offline)\RaytracerNaive.h">
-      <Filter>Raytracers\Naive\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Raytracer (Offline)\SceneNaive.h">
-      <Filter>Raytracers\Naive\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Raytracer %28Offline%29\StaticMeshInstance.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Raytracer (Offline)\StaticMeshNaive.h">
-      <Filter>Raytracers\Naive\Header Files</Filter>
+      <Filter>Application\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Raytracer %28Offline%29\ITraceable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Raytracer (Offline)\StaticMeshManagerNaive.h">
-      <Filter>Raytracers\Naive\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Raytracer (Offline)\RaytracerKdTree.h">
-      <Filter>Raytracers\Kd Tree\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Raytracer (Offline)\StaticMeshKdTree.h">
-      <Filter>Raytracers\Kd Tree\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Raytracer (Offline)\SceneKdTree.h">
-      <Filter>Raytracers\Kd Tree\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Raytracer (Offline)\StaticMeshManagerKdTree.h">
-      <Filter>Raytracers\Kd Tree\Header Files</Filter>
+      <Filter>Application\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeNode.h">
       <Filter>Raytracers\Kd Tree\Header Files</Filter>
@@ -214,6 +193,33 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Raytracer (Offline)\Rasterization.h">
       <Filter>Rasterization\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer %28Offline%29\BasicRaytracer.h">
+      <Filter>Raytracers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer %28Offline%29\Raytracer.h">
+      <Filter>Raytracers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\BasicScene.h">
+      <Filter>Scenes\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\IScene.h">
+      <Filter>Scenes\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\BasicGeometry.h">
+      <Filter>Geometry\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\GeometryCollection.h">
+      <Filter>Geometry\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeGeometry.h">
+      <Filter>Geometry\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\BoundedTraceable.h">
+      <Filter>Application\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer %28Offline%29\GeometryInstance.h">
+      <Filter>Application\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

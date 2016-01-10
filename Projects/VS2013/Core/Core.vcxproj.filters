@@ -26,6 +26,9 @@
     <ClInclude Include="..\..\..\Core\MemoryAllocatorAligned.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Core\GenericAlgorithms.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Core\MemoryAllocatorNaive.cpp">

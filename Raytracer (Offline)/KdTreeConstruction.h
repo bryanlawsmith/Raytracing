@@ -6,7 +6,7 @@ using namespace GeometryLib;
 
 namespace Raytracer
 {
-	class StaticMeshKdTree;
+	class KdTreeGeometry;
 	class KdTreeNode;
 
 	class KdTreeConstruction
@@ -16,7 +16,7 @@ namespace Raytracer
 		/// <summary>
 		/// Constructs the kd tree using the naive spatial median algorithm.
 		/// </summary>
-		static void ConstructUsingNaiveSpatialMedian(StaticMeshKdTree& mesh);
+		static void ConstructUsingNaiveSpatialMedian(KdTreeGeometry& mesh);
 	};
 
 	class NaiveSpatialMedian
@@ -25,7 +25,7 @@ namespace Raytracer
 
 		NaiveSpatialMedian();
 
-		void BuildKdTree(StaticMeshKdTree& mesh);
+		void BuildKdTree(KdTreeGeometry& mesh);
 
 		bool Terminate(unsigned int level);
 

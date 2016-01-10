@@ -10,15 +10,17 @@ using namespace std;
 namespace Raytracer
 {
 	/// <summary>
-	/// Different ray tracer implementations may organize their scenes differently. IScene is the 
-	/// common interface to manipulate a scene.
+	/// Contains a collection of traceable elements. These elements may be 
+	/// further organized depending on the type of Scene.
 	/// </summary>
 	class IScene : public ITraceable
 	{
 	public:
 
-		virtual void AddStaticMeshInstance(const string& meshId, const Basis& basis) = 0;
+		virtual bool Trace(const ray& intersectionRay, float* t, float* results) const = 0;
 
-		virtual void Reset() = 0;
+		virtual void AddTraceable(ITraceable& traceable) = 0;
+
+		virtual void Clear() = 0;
 	};
 }

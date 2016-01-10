@@ -70,6 +70,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Build Output\$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -121,6 +122,8 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)Camera;$(SolutionDir)CommonCode;$(SolutionDir)Compression;$(SolutionDir)Core;$(SolutionDir)MathLib;$(SolutionDir)Assets;$(SolutionDir)gtest\include;$(SolutionDir)Geometry;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -128,60 +131,61 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)Build Output\libs\release\win64\;$(SolutionDir)gtest\lib\release\win64\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>MathLib.lib;Camera.lib;CommonCode.lib;Compression.lib;Assets.lib;Core.lib;gtest.lib;Geometry.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <StackReserveSize>
+      </StackReserveSize>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(ProjectDir)..\..\..\Resources\test.mdb" "$(TargetDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Raytracer (Offline)\Basis.cpp" />
+    <ClCompile Include="..\..\..\Raytracer (Offline)\BasicGeometry.cpp" />
+    <ClCompile Include="..\..\..\Raytracer (Offline)\BasicRaytracer.cpp" />
+    <ClCompile Include="..\..\..\Raytracer (Offline)\BasicScene.cpp" />
+    <ClCompile Include="..\..\..\Raytracer (Offline)\BoundedTraceable.cpp" />
     <ClCompile Include="..\..\..\Raytracer (Offline)\DebugManager.cpp" />
     <ClCompile Include="..\..\..\Raytracer (Offline)\DebugNodeLine.cpp" />
     <ClCompile Include="..\..\..\Raytracer (Offline)\FrameBuffer.cpp" />
     <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeConstruction.cpp" />
+    <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeGeometry.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
+    </ClCompile>
     <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeNode.cpp" />
-    <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeStackTraversal.cpp" />
+    <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeStackTraversal.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Full</Optimization>
+    </ClCompile>
     <ClCompile Include="..\..\..\Raytracer (Offline)\LineDrawing.cpp" />
     <ClCompile Include="..\..\..\Raytracer (Offline)\main.cpp" />
     <ClCompile Include="..\..\..\Raytracer (Offline)\Rasterization.cpp" />
-    <ClCompile Include="..\..\..\Raytracer (Offline)\RaytracerKdTree.cpp" />
-    <ClCompile Include="..\..\..\Raytracer (Offline)\RaytracerNaive.cpp" />
-    <ClCompile Include="..\..\..\Raytracer (Offline)\SceneKdTree.cpp" />
-    <ClCompile Include="..\..\..\Raytracer (Offline)\SceneNaive.cpp" />
-    <ClCompile Include="..\..\..\Raytracer %28Offline%29\StaticMeshInstance.cpp" />
+    <ClCompile Include="..\..\..\Raytracer (Offline)\Raytracer.cpp" />
+    <ClCompile Include="..\..\..\Raytracer %28Offline%29\GeometryInstance.cpp" />
     <ClCompile Include="..\..\..\Raytracer %28Offline%29\DebugNodeTransform.cpp" />
-    <ClCompile Include="..\..\..\Raytracer (Offline)\StaticMeshKdTree.cpp" />
-    <ClCompile Include="..\..\..\Raytracer (Offline)\StaticMeshManagerKdTree.cpp" />
-    <ClCompile Include="..\..\..\Raytracer (Offline)\StaticMeshManagerNaive.cpp" />
-    <ClCompile Include="..\..\..\Raytracer (Offline)\StaticMeshNaive.cpp" />
     <ClCompile Include="..\..\..\Raytracer (Offline)\Tests\FrameBuffer Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\BasicGeometry.h" />
+    <ClInclude Include="..\..\..\Raytracer (Offline)\BasicScene.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\Basis.h" />
+    <ClInclude Include="..\..\..\Raytracer (Offline)\BoundedTraceable.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\DebugManager.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\DebugNode.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\DebugNodeLine.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\DebugNodeTransform.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\FrameBuffer.h" />
     <ClInclude Include="..\..\..\Raytracer %28Offline%29\ITraceable.h" />
+    <ClInclude Include="..\..\..\Raytracer %28Offline%29\BasicRaytracer.h" />
+    <ClInclude Include="..\..\..\Raytracer (Offline)\GeometryCollection.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\IKdTreeTraversal.h" />
-    <ClInclude Include="..\..\..\Raytracer (Offline)\IRaytracer.h" />
+    <ClInclude Include="..\..\..\Raytracer %28Offline%29\Raytracer.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\IScene.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeConstruction.h" />
+    <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeGeometry.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeNode.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeStackTraversal.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\Line.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\LineDrawing.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\Rasterization.h" />
-    <ClInclude Include="..\..\..\Raytracer (Offline)\RaytracerKdTree.h" />
-    <ClInclude Include="..\..\..\Raytracer (Offline)\RaytracerNaive.h" />
-    <ClInclude Include="..\..\..\Raytracer (Offline)\SceneKdTree.h" />
-    <ClInclude Include="..\..\..\Raytracer (Offline)\SceneNaive.h" />
-    <ClInclude Include="..\..\..\Raytracer %28Offline%29\StaticMeshInstance.h" />
-    <ClInclude Include="..\..\..\Raytracer (Offline)\StaticMeshKdTree.h" />
-    <ClInclude Include="..\..\..\Raytracer (Offline)\StaticMeshManagerKdTree.h" />
-    <ClInclude Include="..\..\..\Raytracer (Offline)\StaticMeshManagerNaive.h" />
-    <ClInclude Include="..\..\..\Raytracer (Offline)\StaticMeshNaive.h" />
+    <ClInclude Include="..\..\..\Raytracer %28Offline%29\GeometryInstance.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,5 @@
 #include "KdTreeStackTraversal.h"
-#include "StaticMeshKdTree.h"
+#include "KdTreeGeometry.h"
 #include "kdTreeNode.h"
 #include "DebugManager.h"
 #include <iostream>
@@ -15,7 +15,7 @@ namespace Raytracer
 {
 	struct IntersectionInfo
 	{
-		const StaticMeshKdTree& m_Mesh;
+		const KdTreeGeometry& m_Mesh;
 		const ray& m_Ray;
 		unsigned int& m_Index;
 		float& m_T;
@@ -197,6 +197,7 @@ namespace Raytracer
 
 		if (intersectionFound)
 		{
+			//?
 			intersectionInfo.m_Index = triangleList[index];
 			intersectionInfo.m_T = t;
 			intersectionInfo.m_U = u;
@@ -276,15 +277,15 @@ namespace Raytracer
 		return IntersectKdTreeNode(*childNodes[farSideIndex], intersectionInfo);
 	} 
 
-	bool KdTreeStackTraversal::Traverse(const StaticMeshKdTree& mesh, const ray& intersectionRay, unsigned int* index, float* t, float* u, float* v)
+	bool KdTreeStackTraversal::Traverse(const KdTreeGeometry& geometry, const ray& intersectionRay, unsigned int* index, float* t, float* u, float* v)
 	{
-		auto rootNode = mesh.GetRootNode();
+		auto rootNode = geometry.GetRootNode();
 		if (nullptr == rootNode)
 			return false;
 
 		IntersectionInfo intersectionInfo =
 		{
-			mesh,
+			geometry,
 			intersectionRay,
 			*index,
 			*t,

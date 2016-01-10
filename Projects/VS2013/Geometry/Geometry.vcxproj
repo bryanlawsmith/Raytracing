@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Geometry\BoundingVolumeCalculation.cpp" />
     <ClCompile Include="..\..\..\Geometry\BoxSphere.cpp" />
     <ClCompile Include="..\..\..\Geometry\PlaneAABB.cpp" />
     <ClCompile Include="..\..\..\Geometry\PointAABB.cpp" />
@@ -28,6 +29,7 @@
     <ClCompile Include="..\..\..\Geometry\TriangleAABB.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Geometry\BoundingVolumeCalculation.h" />
     <ClInclude Include="..\..\..\Geometry\BoxSphere.h" />
     <ClInclude Include="..\..\..\Geometry\Geometry.h" />
     <ClInclude Include="..\..\..\Geometry\GeometryLibCommon.h" />

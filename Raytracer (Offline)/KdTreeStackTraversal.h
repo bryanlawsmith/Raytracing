@@ -8,7 +8,7 @@ namespace Raytracer
 
 		/// - IKdTreeTraversal Implementation Begin -
 
-		bool Traverse(const StaticMeshKdTree& mesh, const ray& intersectionRay, unsigned int* index, float* t, float* u, float* v) override;
+		bool Traverse(const KdTreeGeometry& geometry, const ray& intersectionRay, unsigned int* index, float* t, float* u, float* v) override;
 
 		/// - IKdTreeTraversal Implementation End -
 	};

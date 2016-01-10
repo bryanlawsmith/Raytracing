@@ -1,6 +1,6 @@
 #include "KdTreeConstruction.h"
 #include "KdTreeNode.h"
-#include "StaticMeshkdTree.h"
+#include "KdTreeGeometry.h"
 #include <Geometry.h>
 #include <cassert>
 #include <vector>
@@ -11,7 +11,7 @@ using namespace MathLib;
 
 namespace Raytracer
 {
-	void KdTreeConstruction::ConstructUsingNaiveSpatialMedian(StaticMeshKdTree& mesh)
+	void KdTreeConstruction::ConstructUsingNaiveSpatialMedian(KdTreeGeometry& mesh)
 	{
 		auto naiveSpatialMedian = new NaiveSpatialMedian;
 		naiveSpatialMedian->BuildKdTree(mesh);
@@ -21,7 +21,7 @@ namespace Raytracer
 	{
 	}
 
-	void NaiveSpatialMedian::BuildKdTree(StaticMeshKdTree& mesh)
+	void NaiveSpatialMedian::BuildKdTree(KdTreeGeometry& mesh)
 	{
 		m_NumTriangles = mesh.GetNumTriangles();
 		m_Triangles = mesh.GetTriangles();

@@ -32,6 +32,9 @@
     <ClCompile Include="..\..\..\Geometry\PointAABB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Geometry\BoundingVolumeCalculation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Geometry\BoxSphere.h">
@@ -62,6 +65,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Geometry\PointAABB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Geometry\BoundingVolumeCalculation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

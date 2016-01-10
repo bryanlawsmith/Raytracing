@@ -1,32 +1,34 @@
 #pragma once
 
-#include "ITraceable.h"
-#include <string>
+#include "BoundedTraceable.h"
 #include <Triangle.h>
+#include <StaticMesh.h>
 
-using namespace std;
-using namespace GeometryLib;
+using Assets::StaticMesh;
+using GeometryLib::Triangle;
 
 namespace Raytracer
 {
 	class KdTreeNode;
 
-	class StaticMeshKdTree : public ITraceable
+	/// <summary>
+	/// Stores the triangles of a static mesh in a KdTree representation.
+	/// </summary>
+	class KdTreeGeometry : public BoundedTraceable
 	{
 	public:
 
-		StaticMeshKdTree();
-		StaticMeshKdTree(const string& meshId);
-		~StaticMeshKdTree();
+		KdTreeGeometry(const StaticMesh& mesh);
+		~KdTreeGeometry();
 
-		StaticMeshKdTree& operator=(const StaticMeshKdTree& rvalue) = delete;
-		StaticMeshKdTree& operator=(StaticMeshKdTree&& rvalue) = delete;
+		KdTreeGeometry& operator=(const KdTreeGeometry& rvalue) = delete;
+		KdTreeGeometry& operator=(KdTreeGeometry&& rvalue) = delete;
 
 		/// <summary>
 		/// Performs all initialization required for this static mesh.
 		/// This includes construction of the kd tree from the available mesh data.
 		/// </summary>
-		void Initialize(const string& meshId);
+		void Initialize(const StaticMesh& mesh);
 
 		Triangle const * GetTriangles() const;
 

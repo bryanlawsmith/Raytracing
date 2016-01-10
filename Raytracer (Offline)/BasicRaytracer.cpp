@@ -1,42 +1,25 @@
 #include <cassert>
-#include <Camera.h>
 #include <MathLib.h>
-#include "FrameBuffer.h"
-#include "RaytracerNaive.h"
-#include "SceneNaive.h"
+#include "BasicRaytracer.h"
+#include "DebugManager.h"
+#include "HighPerformanceTimer.h"
 
 using namespace MathLib;
+using namespace Core;
 
 namespace Raytracer
 {
-	RaytracerNaive::RaytracerNaive()
+	BasicRaytracer::BasicRaytracer() : 
+		Raytracer()
 	{
-		m_FrameBuffer = nullptr;
-		m_Camera = nullptr;
-		m_Scene = new SceneNaive;
 	}
 
-	RaytracerNaive::~RaytracerNaive()
+	BasicRaytracer::BasicRaytracer(FrameBuffer* frameBuffer, Camera* camera, IScene* scene) :
+		Raytracer(frameBuffer, camera, scene)
 	{
-		delete m_Scene;
 	}
 
-	void RaytracerNaive::SetFrameBuffer(FrameBuffer* frameBuffer)
-	{
-		m_FrameBuffer = frameBuffer;
-	}
-
-	void RaytracerNaive::SetCamera(CameraLib::Camera* camera)
-	{
-		m_Camera = camera;
-	}
-
-	IScene& RaytracerNaive::GetScene()
-	{
-		return *m_Scene;
-	}
-
-	void RaytracerNaive::Raytrace()
+	void BasicRaytracer::Raytrace()
 	{
 		assert(nullptr != m_Camera);
 		assert(nullptr != m_FrameBuffer);
@@ -77,7 +60,7 @@ namespace Raytracer
 		(
 			2.0f / (screenWidth - 1.0f), 0.0f, 0.0f, -1.0f,
 			0.0f, -2.0f / (screenHeight - 1.0f), 0.0f, +1.0f,
-			0.0f, 0.0f, 0.0f, -nearClipPlaneDistance, 
+			0.0f, 0.0f, 0.0f, -nearClipPlaneDistance,
 			0.0f, 0.0f, 0.0f, 1.0f
 		);
 
@@ -86,10 +69,19 @@ namespace Raytracer
 
 		float* currentFrameBufferPosition = m_FrameBuffer->GetData();
 
+		HighPerformanceTimer timer;
+		timer.Start();
+
+		auto& debugManager = Debugging::DebugManager::GetInstance();
+
 		for (int y = 0; y < screenHeight; y++)
 		{
 			for (int x = 0; x < screenWidth; x++)
 			{
+				//if (x == (screenWidth * 0.5f) && y == (screenHeight * 0.5f))
+				if (x == 472 && y == 457)
+					debugManager.SetEnabled(true);
+
 				vector4 screenCoord((float)x, (float)y, 0.0f, 1.0f);
 				vector4 cameraSpaceDirection;
 
@@ -103,15 +95,22 @@ namespace Raytracer
 				ray worldSpaceRay;
 				worldSpaceRay.setPosition(m_Camera->GetPosition());
 				worldSpaceRay.setDirection(cameraSpaceDirection);
-	
+
 				// Intersect world with ray.
 				float t;
 				m_Scene->Trace(worldSpaceRay, &t, currentFrameBufferPosition);
 
 				currentFrameBufferPosition += 4;
 
-				printf("[%i][%i] traced...\n", x, y);
+				//printf("[%i][%i] traced...\n", x, y);
+
+				debugManager.SetEnabled(false);
 			}
 		}
+
+		timer.Stop();
+		printf("Total trace time: %4.2Lf msecs\n", timer.GetTimeMilliseconds());
+		printf("Average ray time: %4.5Lf microseconds\n", timer.GetTimeMicroseconds() / (screenWidth * screenHeight));
+		getchar();
 	}
 }

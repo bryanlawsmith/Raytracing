@@ -1,11 +1,8 @@
-#include "StaticMeshKdTree.h"
+#include "KdTreeGeometry.h"
 #include "KdTreeConstruction.h"
 #include "KdTreeStackTraversal.h"
 #include "KdTreeNode.h"
-#include <MeshManager.h>
-#include <StoredStaticMesh.h>
 #include <MemoryAllocatorAligned.h>
-#include <Triangle.h>
 #include <Geometry.h>
 #include <cassert>
 
@@ -15,39 +12,29 @@ using namespace Core;
 
 namespace Raytracer
 {
-	StaticMeshKdTree::StaticMeshKdTree()
+	KdTreeGeometry::KdTreeGeometry(const StaticMesh& mesh) :
+		m_Triangles(nullptr)
 	{
-		m_NumTriangles = 0;
-		m_Triangles = nullptr;
+		Initialize(mesh);
 	}
 
-	StaticMeshKdTree::StaticMeshKdTree(const string& meshId)
-	{
-		m_Triangles = nullptr;
-
-		Initialize(meshId);
-	}
-
-	StaticMeshKdTree::~StaticMeshKdTree()
+	KdTreeGeometry::~KdTreeGeometry()
 	{
 		FreeMemory();
 	}
 
-	void StaticMeshKdTree::Initialize(const string& meshId)
+	void KdTreeGeometry::Initialize(const StaticMesh& mesh)
 	{
 		FreeMemory();
 
-		auto& meshManager = MeshManager::GetInstance();
-		auto mesh = meshManager.GetMesh(meshId);
-
-		auto numVertices = mesh->GetNumVertices();
-		auto numIndices = mesh->GetNumIndices();
+		auto numVertices = mesh.GetNumVertices();
+		auto numIndices = mesh.GetNumIndices();
 		assert(0 == numIndices % 3);
 
-		auto vertexArray = mesh->GetVertexArray();
-		auto normalArray = mesh->GetNormalArray();
-		auto texCoordArray = mesh->GetTexCoordArray();
-		auto indexArray = mesh->GetIndexArray();
+		auto vertexArray = mesh.GetVertexArray();
+		auto normalArray = mesh.GetNormalArray();
+		auto texCoordArray = mesh.GetTexCoordArray();
+		auto indexArray = mesh.GetIndexArray();
 
 		// Calculate and allocate required storage space.
 		m_NumTriangles = numIndices / 3;
@@ -70,10 +57,13 @@ namespace Raytracer
 			}
 		}
 
+		// Calculate the bounding volume.
+		GeometryLib::CalculateBoundingVolume(vertexArray, numVertices, m_Bounds[AABB_EXTENTS_MIN], m_Bounds[AABB_EXTENTS_MAX]);
+
 		KdTreeConstruction::ConstructUsingNaiveSpatialMedian(*this);
 	}
 
-	void StaticMeshKdTree::FreeMemory()
+	void KdTreeGeometry::FreeMemory()
 	{
 		if (nullptr != m_Triangles)
 		{
@@ -86,7 +76,7 @@ namespace Raytracer
 		ResetKdTree();
 	}
 
-	void StaticMeshKdTree::ResetKdTree()
+	void KdTreeGeometry::ResetKdTree()
 	{
 		if (nullptr != m_RootNode)
 			delete m_RootNode;
@@ -94,16 +84,15 @@ namespace Raytracer
 		m_RootNode = nullptr;
 	}
 
-	bool StaticMeshKdTree::Trace(const ray& intersectionRay, float* t, float* results) const
+	bool KdTreeGeometry::Trace(const ray& intersectionRay, float* t, float* results) const
 	{
 		IKdTreeTraversal& traversalAlgorithm = KdTreeStackTraversal();
 
 		float u;
 		float v;
-		float intersectedTriangleT;
-		unsigned int intersectedTriangleIndex; 
+		unsigned int intersectedTriangleIndex;
 
-		if (traversalAlgorithm.Traverse(*this, intersectionRay, &intersectedTriangleIndex, &intersectedTriangleT, &u, &v))
+		if (traversalAlgorithm.Traverse(*this, intersectionRay, &intersectedTriangleIndex, t, &u, &v))
 		{
 			// Shade result.
 			vector4 objectSpaceNormal;
@@ -129,17 +118,17 @@ namespace Raytracer
 		return false;
 	}
 
-	Triangle const * StaticMeshKdTree::GetTriangles() const
+	Triangle const * KdTreeGeometry::GetTriangles() const
 	{
 		return m_Triangles;
 	}
 
-	unsigned int StaticMeshKdTree::GetNumTriangles() const
+	unsigned int KdTreeGeometry::GetNumTriangles() const
 	{
 		return m_NumTriangles;
 	}
 
-	KdTreeNode* StaticMeshKdTree::GetRootNode() const
+	KdTreeNode* KdTreeGeometry::GetRootNode() const
 	{
 		return m_RootNode;
 	}

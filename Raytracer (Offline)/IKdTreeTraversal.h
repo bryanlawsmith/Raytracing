@@ -4,7 +4,7 @@ using namespace MathLib;
 
 namespace Raytracer
 {
-	class StaticMeshKdTree;
+	class KdTreeGeometry;
 
 	/// <summary>
 	/// Interface defining the entry point for a Kd tree traversal algorithm.
@@ -16,7 +16,7 @@ namespace Raytracer
 		/// <summary>
 		/// Traverses the generated kd tree, and determines the intersected triangle index if there is one.
 		/// </summary>
-		/// <param name="mesh">Mesh containing the kd tree to traverse.</param>
+		/// <param name="geometry">Geometry containing the kd tree to traverse.</param>
 		/// <param name="intersectionRay">The ray to intersect.</param>
 		/// <param name="index">If successful, will store the correct triangle's index in the address specified.</param>
 		/// <param name="t">If successful, will store the t value of the correct triangle. Used to generate the intersection point.</param>
@@ -25,6 +25,6 @@ namespace Raytracer
 		/// <return>
 		/// True if an intersection was found, false if not.
 		/// </return>
-		virtual bool Traverse(const StaticMeshKdTree& mesh, const ray& intersectionRay, unsigned int* index, float* t, float* u, float* v) = 0;
+		virtual bool Traverse(const KdTreeGeometry& geometry, const ray& intersectionRay, unsigned int* index, float* t, float* u, float* v) = 0;
 	};
 }
