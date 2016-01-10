@@ -122,7 +122,7 @@ void main()
 	// Acquire the coordinates of the pixel to process.
 	ivec2 texelCoordinate = ivec2(gl_GlobalInvocationID.xy);
 	
-	vec4 screenRay = vec4(texelCoordinate.x, 720 - texelCoordinate.y, 0.0, 1.0);		// Need to flip y here.
+	vec4 screenRay = vec4(texelCoordinate.x, 600 - texelCoordinate.y, 0.0, 1.0);		// Need to flip y here.
 	screenRay = u_ScreenCoordTransform * screenRay;
 	
 	// Set to vector for the rotation transform.
