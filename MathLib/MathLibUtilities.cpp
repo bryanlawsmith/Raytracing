@@ -137,8 +137,8 @@ void GenerateInverseTransformMatrix(matrix4x4& transform,
 	matrix4x4 invOrientationTransform;
 	quaternion invOrientation;
 	quaternion_inverse(orientation, invOrientation);
-	quaternion_toMatrix(orientation, invOrientationTransform);
-	
+	quaternion_toMatrix(invOrientation, invOrientationTransform);
+
 	// Generate the inverse scale transform.
 	matrix4x4 invScaleTransform
 	(
