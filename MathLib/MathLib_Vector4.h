@@ -103,6 +103,10 @@ public:
 	{
 		return v[0];
 	}
+
+	float& operator[](int index) { return v[3 - index]; }
+
+	float operator[](int index) const { return v[3 - index]; }
 } MATHLIB_ALIGN(16);
 
 MATHLIB_INLINE void vector4_setToPoint(vector4& vector)
