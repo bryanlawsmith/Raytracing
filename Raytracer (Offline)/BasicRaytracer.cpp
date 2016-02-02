@@ -78,9 +78,8 @@ namespace Raytracer
 		{
 			for (int x = 0; x < screenWidth; x++)
 			{
-				//if (x == (screenWidth * 0.5f) && y == (screenHeight * 0.5f))
-				if (x == 472 && y == 457)
-					debugManager.SetEnabled(true);
+				if (x == (screenWidth * 0.5f) && y == (screenHeight * 0.5f))
+					debugManager.SetEnabled(false);
 
 				vector4 screenCoord((float)x, (float)y, 0.0f, 1.0f);
 				vector4 cameraSpaceDirection;

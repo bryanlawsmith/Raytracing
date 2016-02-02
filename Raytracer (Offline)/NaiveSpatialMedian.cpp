@@ -1,30 +1,20 @@
-#include "KdTreeConstruction.h"
-#include "KdTreeNode.h"
+#include "NaiveSpatialMedian.h"
 #include "KdTreeGeometry.h"
+#include "KdTreeNode.h"
 #include <Geometry.h>
-#include <cassert>
-#include <vector>
-
-using namespace std;
-using namespace GeometryLib;
-using namespace MathLib;
 
 namespace Raytracer
 {
-	void KdTreeConstruction::ConstructUsingNaiveSpatialMedian(KdTreeGeometry& mesh)
-	{
-		auto naiveSpatialMedian = new NaiveSpatialMedian;
-		naiveSpatialMedian->BuildKdTree(mesh);
-	}
-
+namespace KdTreeConstruction
+{
 	NaiveSpatialMedian::NaiveSpatialMedian()
 	{
 	}
 
-	void NaiveSpatialMedian::BuildKdTree(KdTreeGeometry& mesh)
+	void NaiveSpatialMedian::Construct(KdTreeGeometry& geometry)
 	{
-		m_NumTriangles = mesh.GetNumTriangles();
-		m_Triangles = mesh.GetTriangles();
+		m_NumTriangles = geometry.GetNumTriangles();
+		m_Triangles = geometry.GetTriangles();
 
 		auto rootNode = new KdTreeNode;
 
@@ -37,27 +27,30 @@ namespace Raytracer
 
 		RecursiveBuild(rootNode, 0);
 
-		mesh.ResetKdTree();
-		mesh.m_RootNode = rootNode;
+		geometry.ResetKdTree();
+		geometry.m_RootNode = rootNode;
 	}
 
-	bool NaiveSpatialMedian::Terminate(unsigned int level)
+	bool NaiveSpatialMedian::Terminate(unsigned level)
 	{
+		// Hardcoded termination level.
 		return level >= 8;
 	}
 
-	void NaiveSpatialMedian::RecursiveBuild(KdTreeNode* node, unsigned int level)
+	void NaiveSpatialMedian::RecursiveBuild(KdTreeNode* node, unsigned level)
 	{
 		auto axis = level % 3;
 
 		if (Terminate(level))
 		{
-			// Then this is a leaf node, determine which triangles intersect this node and store in an index list.
+			// Then this is a leaf node, determine which triangles intersect this node and store in 
+			// an index list.
 			AssignTriangleListToNode(node);
 			return;
 		}
 
-		// If termination condition is not met then we need to subdivide this node's space and create another level of the kd tree.
+		// If termination condition is not met then we need to subdivide this node's space and create 
+		// another level of the kd tree.
 		const vector4& boundingMin = node->GetBoundingMin();
 		const vector4& boundingMax = node->GetBoundingMax();
 
@@ -119,22 +112,22 @@ namespace Raytracer
 
 	void NaiveSpatialMedian::AssignTriangleListToNode(KdTreeNode* node)
 	{
-		// Calculate node center and half widths.
 		const vector4& nodeMin = node->GetBoundingMin();
 		const vector4& nodeMax = node->GetBoundingMax();
 
-		vector<unsigned int> indexVector;
+		vector<unsigned> indexVector;
 
-		for (unsigned int i = 0; i < m_NumTriangles; i++)
-			if (TriangleIntersectsAABB(m_Triangles[i], nodeMin, nodeMax))
+		for (unsigned i = 0; i < m_NumTriangles; i++)
+			if (GeometryLib::TriangleIntersectsAABB(m_Triangles[i], nodeMin, nodeMax))
 				indexVector.push_back(i);
 
 		// Copy triangle indices to node.
 		size_t numIndices = indexVector.size();
-		node->m_NumTriangles = (unsigned int)numIndices;
-		node->m_TriangleList = new unsigned int[numIndices];
+		node->m_NumTriangles = (unsigned)numIndices;
+		node->m_TriangleList = new unsigned[numIndices];
 
 		for (size_t i = 0; i < numIndices; i++)
 			node->m_TriangleList[i] = indexVector[i];
 	}
+}
 }

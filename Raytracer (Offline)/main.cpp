@@ -10,6 +10,7 @@
 #include "BasicScene.h"
 #include "LineDrawing.h"
 #include "DebugManager.h"
+#include "BasicGeometry.h"
 #include "GeometryCollection.h"
 
 using namespace Assets;
@@ -47,7 +48,7 @@ void PrepareScene(IScene& scene)
 	basis.m_Scale.z = 1.0f;
 
 	auto monkeyInstance2 = new GeometryInstance(g_GeometryCollection["monkey"], basis);
-	scene.AddTraceable(*monkeyInstance2);
+	//scene.AddTraceable(*monkeyInstance2);
 }
 
 int DoScene(int argc, char** argv)

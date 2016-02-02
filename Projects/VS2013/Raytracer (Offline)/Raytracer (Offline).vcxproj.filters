@@ -108,9 +108,6 @@
     <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeNode.cpp">
       <Filter>Raytracers\Kd Tree\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeConstruction.cpp">
-      <Filter>Raytracers\Kd Tree\Construction\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeStackTraversal.cpp">
       <Filter>Raytracers\Kd Tree\Traversal\Source Files</Filter>
     </ClCompile>
@@ -150,6 +147,12 @@
     <ClCompile Include="..\..\..\Raytracer %28Offline%29\GeometryInstance.cpp">
       <Filter>Application\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\NaiveSpatialMedian.cpp">
+      <Filter>Raytracers\Kd Tree\Construction\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Raytracer (Offline)\SAH.cpp">
+      <Filter>Raytracers\Kd Tree\Construction\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Raytracer (Offline)\FrameBuffer.h">
@@ -169,9 +172,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeStackTraversal.h">
       <Filter>Raytracers\Kd Tree\Traversal\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeConstruction.h">
-      <Filter>Raytracers\Kd Tree\Construction\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Raytracer (Offline)\LineDrawing.h">
       <Filter>Rasterization\Header Files</Filter>
@@ -220,6 +220,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Raytracer %28Offline%29\GeometryInstance.h">
       <Filter>Application\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\NaiveSpatialMedian.h">
+      <Filter>Raytracers\Kd Tree\Construction\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\IKdTreeBuilder.h">
+      <Filter>Raytracers\Kd Tree\Construction\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Raytracer (Offline)\SAH.h">
+      <Filter>Raytracers\Kd Tree\Construction\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

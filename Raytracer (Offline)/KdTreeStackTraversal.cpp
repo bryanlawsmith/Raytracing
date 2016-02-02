@@ -213,9 +213,6 @@ namespace Raytracer
 		if (debugManager.GetEnabled())
 			RenderDebugInfo(node, intersectionInfo);
 
-		if (node.IsChild())
-			return IntersectKdTreeChildNode(node, intersectionInfo);
-
 		float tEntry;		// t value of the ray at the entry point of this node's voxel.
 		float tExit;		// t value of the ray at the exit point of this node's voxel.
 		float tPlane;		// t value of the ray if it intersects the splitting plane of this node's voxel.
@@ -223,6 +220,9 @@ namespace Raytracer
 		bool rayIntersectsAABB = GeometryLib::RayIntersectsAABB(intersectionInfo.m_Ray, &tEntry, &tExit, node.GetBoundingMin(), node.GetBoundingMax());
 		if (!rayIntersectsAABB)
 			return false;
+
+		if (node.IsChild())
+			return IntersectKdTreeChildNode(node, intersectionInfo);
 
 		auto childNodes = node.GetChildren();
 
@@ -245,6 +245,9 @@ namespace Raytracer
 		// Determine if we need to traverse one or both nodes of the node.
 		if (tExit < tPlane)
 			return IntersectKdTreeNode(*childNodes[nearSideIndex], intersectionInfo);
+
+		if (tPlane < tEntry)
+			return IntersectKdTreeNode(*childNodes[farSideIndex], intersectionInfo);
 
 		bool intersectionFound = IntersectKdTreeNode(*childNodes[nearSideIndex], intersectionInfo);
 		if (intersectionFound)

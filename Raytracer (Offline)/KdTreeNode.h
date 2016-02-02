@@ -6,6 +6,12 @@ using namespace MathLib;
 
 namespace Raytracer
 {
+	namespace KdTreeConstruction
+	{
+		class NaiveSpatialMedian;
+		class SAH;
+	}
+
 	class KdTreeNode
 	{
 	public:
@@ -70,6 +76,9 @@ namespace Raytracer
 
 		KdTreeNode* m_Children[2];
 
-		friend class NaiveSpatialMedian;
+		// Friend class declarations. 
+		// TODO: Is there a cleaner way to do this?
+		friend class Raytracer::KdTreeConstruction::NaiveSpatialMedian;
+		friend class Raytracer::KdTreeConstruction::SAH;
 	};
 }

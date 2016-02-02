@@ -1,7 +1,8 @@
 #include "KdTreeGeometry.h"
-#include "KdTreeConstruction.h"
 #include "KdTreeStackTraversal.h"
 #include "KdTreeNode.h"
+#include "NaiveSpatialMedian.h"
+#include "SAH.h"
 #include <MemoryAllocatorAligned.h>
 #include <Geometry.h>
 #include <cassert>
@@ -60,7 +61,13 @@ namespace Raytracer
 		// Calculate the bounding volume.
 		GeometryLib::CalculateBoundingVolume(vertexArray, numVertices, m_Bounds[AABB_EXTENTS_MIN], m_Bounds[AABB_EXTENTS_MAX]);
 
-		KdTreeConstruction::ConstructUsingNaiveSpatialMedian(*this);
+		// Construct the kd tree.
+		{
+			using namespace KdTreeConstruction;
+			//KdTreeConstruction::NaiveSpatialMedian kdTreeBuilder;
+			KdTreeConstruction::SAH kdTreeBuilder(16, 16);
+			kdTreeBuilder.Construct(*this);
+		}
 	}
 
 	void KdTreeGeometry::FreeMemory()

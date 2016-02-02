@@ -9,6 +9,12 @@ using GeometryLib::Triangle;
 
 namespace Raytracer
 {
+	namespace KdTreeConstruction
+	{
+		class NaiveSpatialMedian;
+		class SAH;
+	}
+
 	class KdTreeNode;
 
 	/// <summary>
@@ -63,7 +69,9 @@ namespace Raytracer
 		/// </summary>
 		void ResetKdTree();
 
-		friend class KdTreeConstruction;
-		friend class NaiveSpatialMedian;
+		// Friend class declarations. 
+		// TODO: Is there a cleaner way to do this?
+		friend class KdTreeConstruction::NaiveSpatialMedian;
+		friend class KdTreeConstruction::SAH;
 	};
 }

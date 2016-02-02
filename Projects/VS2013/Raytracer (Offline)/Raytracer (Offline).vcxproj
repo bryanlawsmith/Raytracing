@@ -94,6 +94,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Build Output\libs\debug\win64\;$(SolutionDir)gtest\lib\debug\win64\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>MathLib.lib;Camera.lib;CommonCode.lib;Compression.lib;Assets.lib;Core.lib;gtest.lib;Geometry.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <StackReserveSize>10000000</StackReserveSize>
+      <StackCommitSize>10000000</StackCommitSize>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(ProjectDir)..\..\..\Resources\test.mdb" "$(TargetDir)"</Command>
@@ -131,8 +133,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)Build Output\libs\release\win64\;$(SolutionDir)gtest\lib\release\win64\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>MathLib.lib;Camera.lib;CommonCode.lib;Compression.lib;Assets.lib;Core.lib;gtest.lib;Geometry.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <StackReserveSize>
-      </StackReserveSize>
+      <StackReserveSize>16000</StackReserveSize>
+      <StackCommitSize>16000</StackCommitSize>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(ProjectDir)..\..\..\Resources\test.mdb" "$(TargetDir)"</Command>
@@ -146,7 +148,6 @@
     <ClCompile Include="..\..\..\Raytracer (Offline)\DebugManager.cpp" />
     <ClCompile Include="..\..\..\Raytracer (Offline)\DebugNodeLine.cpp" />
     <ClCompile Include="..\..\..\Raytracer (Offline)\FrameBuffer.cpp" />
-    <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeConstruction.cpp" />
     <ClCompile Include="..\..\..\Raytracer (Offline)\KdTreeGeometry.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
     </ClCompile>
@@ -156,10 +157,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Raytracer (Offline)\LineDrawing.cpp" />
     <ClCompile Include="..\..\..\Raytracer (Offline)\main.cpp" />
+    <ClCompile Include="..\..\..\Raytracer (Offline)\NaiveSpatialMedian.cpp" />
     <ClCompile Include="..\..\..\Raytracer (Offline)\Rasterization.cpp" />
     <ClCompile Include="..\..\..\Raytracer (Offline)\Raytracer.cpp" />
     <ClCompile Include="..\..\..\Raytracer %28Offline%29\GeometryInstance.cpp" />
     <ClCompile Include="..\..\..\Raytracer %28Offline%29\DebugNodeTransform.cpp" />
+    <ClCompile Include="..\..\..\Raytracer (Offline)\SAH.cpp" />
     <ClCompile Include="..\..\..\Raytracer (Offline)\Tests\FrameBuffer Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -175,17 +178,19 @@
     <ClInclude Include="..\..\..\Raytracer %28Offline%29\ITraceable.h" />
     <ClInclude Include="..\..\..\Raytracer %28Offline%29\BasicRaytracer.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\GeometryCollection.h" />
+    <ClInclude Include="..\..\..\Raytracer (Offline)\IKdTreeBuilder.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\IKdTreeTraversal.h" />
     <ClInclude Include="..\..\..\Raytracer %28Offline%29\Raytracer.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\IScene.h" />
-    <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeConstruction.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeGeometry.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeNode.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\KdTreeStackTraversal.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\Line.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\LineDrawing.h" />
+    <ClInclude Include="..\..\..\Raytracer (Offline)\NaiveSpatialMedian.h" />
     <ClInclude Include="..\..\..\Raytracer (Offline)\Rasterization.h" />
     <ClInclude Include="..\..\..\Raytracer %28Offline%29\GeometryInstance.h" />
+    <ClInclude Include="..\..\..\Raytracer (Offline)\SAH.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
