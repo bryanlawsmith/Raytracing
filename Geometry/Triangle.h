@@ -51,6 +51,12 @@ namespace GeometryLib
 		/// triangles in the output vector.
 		/// </summary>
 		void Subdivide(vector<Triangle>& outputVector);
+
+		/// <summary>Calculates the bounding box for this triangle.</summary>
+		void ComputeBounds(vector4& min, vector4& max) const;
+
+		/// <summary>Calculates the centroid for this triangle.</summary.
+		vector4 ComputeCentroid() const;
 	};
 
 }

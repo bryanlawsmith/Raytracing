@@ -1,4 +1,5 @@
 #include "Triangle.h"
+#include <algorithm>
 
 namespace GeometryLib
 {
@@ -107,5 +108,36 @@ namespace GeometryLib
 						   TriangleVertex(midpoint12Position, midpoint12TexCoord),
 						   TriangleVertex(midpoint20Position, midpoint20TexCoord));
 		outputVector.push_back(triangle3);
+	}
+
+	vector4 Triangle::ComputeCentroid() const
+	{
+		float x = (m_Vertices[0].m_Position.x + m_Vertices[1].m_Position.x +
+			m_Vertices[2].m_Position.x) / 3.0f;
+
+		float y = (m_Vertices[0].m_Position.y + m_Vertices[1].m_Position.y +
+			m_Vertices[2].m_Position.y) / 3.0f;
+
+		float z = (m_Vertices[0].m_Position.z + m_Vertices[1].m_Position.z +
+			m_Vertices[2].m_Position.z) / 3.0f;
+
+		return vector4(x, y, z, 0.0f);
+	}
+
+	void Triangle::ComputeBounds(vector4& min, vector4& max) const
+	{
+		min.setXYZ(FLT_MAX, FLT_MAX, FLT_MAX);
+		max.setXYZ(-FLT_MAX, -FLT_MAX, -FLT_MAX);
+
+		for (int i = 0; i < 3; i++)
+		{
+			min.x = std::min(min.x, m_Vertices[i].m_Position.x);
+			min.y = std::min(min.y, m_Vertices[i].m_Position.y);
+			min.z = std::min(min.z, m_Vertices[i].m_Position.z);
+
+			max.x = std::max(max.x, m_Vertices[i].m_Position.x);
+			max.y = std::max(max.y, m_Vertices[i].m_Position.y);
+			max.z = std::max(max.z, m_Vertices[i].m_Position.z);
+		}
 	}
 }

@@ -23,7 +23,7 @@ namespace GeometryLib
 	/// </summary>
 	/// <param name="numTriangles">The number of triangles in the specified triangle list.</param>
 	/// <param name="triangles">Array of triangles to process.</param>
-	/// <param name="min">Reference to the vector that will store the minimal values.</pararm>
+	/// <param name="min">Reference to the vector that will store the minimal values.</param>
 	/// <param name="max">Reference to the vector that will store the maximal values.</param>
 	void ComputeAABBForTriangles(unsigned int numTriangles, const Triangle* triangles, vector4& min, vector4& max);
 }
